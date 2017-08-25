@@ -2,7 +2,7 @@ from django.db.backends.postgresql_psycopg2.base import DatabaseWrapper as Postg
 
 
 class DatabaseWrapper(PostgresWrapper):
-    def _cursor(self):
+    def _cursor(self, *args, **kwargs):
         """
         Check for a connection then checks to see if it is usable. If it is not we remove the connection and the
         default postgres wrapper will automatically reconnect in its _cursor() function.
@@ -11,4 +11,4 @@ class DatabaseWrapper(PostgresWrapper):
             if not self.is_usable():
                 self.connection.close()
                 self.connection = None
-        return super(DatabaseWrapper, self)._cursor()
+        return super(DatabaseWrapper, self)._cursor(*args, **kwargs)
