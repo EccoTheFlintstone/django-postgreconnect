@@ -1,4 +1,4 @@
-from django.db.backends.postgresql_psycopg2.base import DatabaseWrapper as PostgresWrapper
+from django.db.backends.postgresql.base import DatabaseWrapper as PostgresWrapper
 
 
 class DatabaseWrapper(PostgresWrapper):
